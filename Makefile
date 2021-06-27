@@ -30,7 +30,7 @@
 #------------------------------------------------------------------------------
 include sources.mk
 
-TARGET = c1m2
+TARGET = c1m4
 PPFS = $(SOURCES:.c=.i)
 ASMs = $(SOURCES:.c=.asm)
 OBJS = $(SOURCES:.c=.o)

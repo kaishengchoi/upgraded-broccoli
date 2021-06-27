@@ -12,25 +12,31 @@
 ifeq ($(PLATFORM),HOST)
 
 	SOURCES = \
-		./main.c \
-		./memory.c
+		./src/main.c \
+		./src/memory.c \
+		./src/course1.c \
+		./src/stats.c \
+		./src/data.c
 
 	INCLUDES = \
-		-I ../include/common
+		-I ./include/common
 
 else ifeq ($(PLATFORM),MSP432)
 
 	SOURCES = \
-		./main.c \
-		./memory.c \
-		./startup_msp432p401r_gcc.c \
-		./system_msp432p401r.c \
-		./interrupts_msp432p401r_gcc.c
+		./src/main.c \
+		./src/memory.c \
+		./src/course1.c \
+		./src/stats.c \
+		./src/data.c \
+		./src/startup_msp432p401r_gcc.c \
+		./src/system_msp432p401r.c \
+		./src/interrupts_msp432p401r_gcc.c
 
 	INCLUDES = \
-		-I ../include/common \
-		-I ../include/CMSIS \
-		-I ../include/msp432
+		-I ./include/common \
+		-I ./include/CMSIS \
+		-I ./include/msp432
 
 endif
 
