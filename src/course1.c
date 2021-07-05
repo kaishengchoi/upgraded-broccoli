@@ -339,6 +339,7 @@ void course1(void)
   for ( i = 0; i < TESTCOUNT; i++) 
   {
     failed += results[i];
+    PRINTF("%d \r\n",results[i]);
   }
 
   PRINTF("--------------------------------\n");
