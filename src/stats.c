@@ -9,7 +9,7 @@
  *
  *****************************************************************************/
 /**
- * @file stats.hc
+ * @file stats.h
  * @brief Implementation file of week 1 programming assignment
  *
  * A simple application that performs statistical analytics on a dataset. This 
@@ -24,6 +24,7 @@
 
 #include <stdio.h>
 #include "stats.h"
+#include "platform.h"
 
 /* Size of the Data Set */
 #define SIZE (40)
@@ -46,21 +47,21 @@ void swap(unsigned char *p, unsigned char *q);
 void print_statistics(unsigned char* array, int length) {
   
   print_array(array, length);
-  printf ("Median : %d\r\n", find_median(array, length));
-  printf ("Mean : %d\r\n", find_mean(array, length));
-  printf ("Maximum : %d\r\n", find_maximum(array, length));
-  printf ("Minimum : %d\r\n", find_minimum(array, length));
+  PRINTF ("Median : %d\r\n", find_median(array, length));
+  PRINTF ("Mean : %d\r\n", find_mean(array, length));
+  PRINTF ("Maximum : %d\r\n", find_maximum(array, length));
+  PRINTF ("Minimum : %d\r\n", find_minimum(array, length));
 
 }
 
 void print_array(unsigned char* array, int length){
-  
+#ifdef VERBOSE
   for ( int i = 0 ; i < length ; i++ ) {
-    printf("index %d : %d\t", i, array[i]);
+    PRINTF("index %d : %d\t", i, array[i]);
     if ( (i+1)%8 == 0 )
-      printf("\r\n");
+      PRINTF("\r\n");
   }
-
+#endif
 }
 
 unsigned char find_median (unsigned char* array, int length) {

@@ -45,11 +45,11 @@ ifeq ($(PLATFORM),HOST)
 
 	LDFLAGS = -Wl,-Map=$(TARGET).map
 	CFLAGS = -Wall -Werror -g -O0 -std=c99
-	CPPFLAGs = -DHOST -MD -MP 
+	CPPFLAGs = -DHOST -MD -MP -DCOURSE1 -DVERBOSE 
 
 else ifeq ($(PLATFORM),MSP432)
 
-	LINKER_FILE = ../msp432p401r.lds
+	LINKER_FILE = ./msp432p401r.lds
 	CPU = cortex-m4
 	ARCH = thumb
 	SPECS = nosys.specs
@@ -61,7 +61,7 @@ else ifeq ($(PLATFORM),MSP432)
 
 	LDFLAGS = -Wl,-Map=$(TARGET).map -T $(LINKER_FILE)
 	CFLAGS = -mcpu=$(CPU) -m$(ARCH) --specs=$(SPECS) -march=armv7e-m -mfloat-abi=hard -mfpu=fpv4-sp-d16 -Wall -Werror -g -O0 -std=c99
-	CPPFLAGs = -DMSP432 -MD -MP  
+	CPPFLAGs = -DMSP432 -MD -MP  -DCOURSE1 -DVERBOSE 
 
 endif
 
