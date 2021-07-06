@@ -45,7 +45,7 @@ ifeq ($(PLATFORM),HOST)
 
 	LDFLAGS = -Wl,-Map=$(TARGET).map
 	CFLAGS = -Wall -Werror -g -O0 -std=c99
-	CPPFLAGs = -DHOST -MD -MP -DCOURSE1 -DVERBOSE 
+	CPPFLAGs = -DHOST -MD -MP 
 
 else ifeq ($(PLATFORM),MSP432)
 
@@ -61,8 +61,16 @@ else ifeq ($(PLATFORM),MSP432)
 
 	LDFLAGS = -Wl,-Map=$(TARGET).map -T $(LINKER_FILE)
 	CFLAGS = -mcpu=$(CPU) -m$(ARCH) --specs=$(SPECS) -march=armv7e-m -mfloat-abi=hard -mfpu=fpv4-sp-d16 -Wall -Werror -g -O0 -std=c99
-	CPPFLAGs = -DMSP432 -MD -MP  -DCOURSE1 -DVERBOSE 
+	CPPFLAGs = -DMSP432 -MD -MP 
 
+endif
+
+ifeq ($(COURSE1),TRUE)
+	CPPFLAGs += -DCOURSE1
+endif
+
+ifeq ($(VERBOSE),TRUE)
+	CPPFLAGs += -DVERBOSE
 endif
 
 %.i : %.c
