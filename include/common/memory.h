@@ -96,12 +96,99 @@ void set_all(char * ptr, char value, unsigned int size);
  */
 void clear_all(char * ptr, unsigned int size);
 
+/**
+ * @brief Copy elements from source to destination data array
+ *
+ * Takes two byte pointers (one source and one destination) and a length 
+ * of bytes to move from the source location to the destination. Copying
+ * will not be corrupted if there is overlap betwen pointer to source and
+ * destination data array.
+ *
+ * @param src Pointer to source data array
+ * @param dst Pointer to destination data array 
+ * @param length Number of elements to be copy
+ *
+ * @return Pointer to dst.
+ */
 uint8_t * my_memmove(uint8_t * src, uint8_t * dst, size_t length);
+
+/**
+ * @brief Copy elements from source to destination data array
+ *
+ * Takes two byte pointers (one source and one destination) and a length 
+ * of bytes to move from the source location to the destination. Copying
+ * will be corrupted if there is overlap betwen pointer to source and
+ * destination data array.
+ *
+ * @param src Pointer to source data array
+ * @param dst Pointer to destination data array 
+ * @param length Number of elements to be copy
+ *
+ * @return Pointer to dst.
+ */
 uint8_t * my_memcopy(uint8_t * src, uint8_t * dst, size_t length);
+
+/**
+ * @brief Set value to elements in a data array
+ *
+ * Take a pointer to a source memory location, a length in bytes and set 
+ * all locations of that memory to a given value.
+ *
+ * @param src Pointer to source data array
+ * @param length Number of elements to set
+ * @param value value to set
+ *
+ * @return Pointer to src.
+ */
 uint8_t * my_memset(uint8_t * src, size_t length, uint8_t value);
+
+/**
+ * @brief Clears elements in a data array
+ *
+ * Given a pointer to a char data set, this will set a clear a number
+ * of elements given the size provided. Clear means to set to zero. 
+ *
+ * @param src Pointer to source data array
+ * @param length Number of elements to set
+ *
+ * @return Pointer to src.
+ */
 uint8_t * my_memzero(uint8_t * src, size_t length);
+
+/**
+ * @brief Reverse byte order of elements in a data array
+ *
+ * Take a pointer to a memory location and a length in bytes and reverse
+ * the order of all of the bytes.
+ *
+ * @param src Pointer to source data array
+ * @param length Number of elements
+ *
+ * @return Pointer to src.
+ */
 uint8_t * my_reverse(uint8_t * src, size_t length);
+
+/**
+ * @brief Allocate dynamic memory
+ *
+ * Take number of words to allocate in dynamic memory
+ *
+ * @param length Number of elements to be allocated
+ *
+ * @return Pointer to allocated memory.
+ */
 int32_t * reserve_words(size_t length);
+
+/**
+ * @brief Free dynamic allocated memory
+ *
+ * Free a dynamic memory allocation by providing the pointer src 
+ * to the function
+ *
+ * @param src Pointer to dynamic allocated memory to be free
+ *
+ * @return void.
+ */
 void free_words(uint32_t * src);
 
 #endif /* __MEMORY_H__ */
